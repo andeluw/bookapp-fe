@@ -148,7 +148,7 @@ export default function DetailBukuPage() {
     <AdminLayout
       title='Detail Buku'
       subheading='Halaman untuk melihat detail buku.'
-      breadcrumbs={['/', '/buku', '/buku/detail/[id]']}
+      breadcrumbs={['/', '/buku/cari', '/buku/detail/[id]']}
     >
       <div className='flex flex-col gap-8'>
         <Card>
