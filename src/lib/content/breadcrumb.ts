@@ -11,11 +11,13 @@ export const breadcrumb: Record<string, string> = {
 
   '/pembelian/form': 'Pembelian Buku',
   '/pembelian': 'Daftar Pembelian',
-  '/pembelian/detail': 'Detail Pembelian',
+  '/detail-pembelian': 'Detail Pembelian',
+  '/pembelian/[id]': 'Detail Pembelian',
 
   '/penjualan/form': 'Penjualan Buku',
   '/penjualan': 'Daftar Penjualan',
-  '/penjualan/detail': 'Detail Penjualan',
+  '/detail-penjualan': 'Detail Penjualan',
+  '/penjualan/[id]': 'Detail Penjualan',
 
   '/membership/pengguna': 'Lihat Pengguna',
   '/membership/buat': 'Buat Membership',

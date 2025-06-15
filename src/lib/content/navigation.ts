@@ -47,10 +47,10 @@ export const navigation = {
           url: '/pembelian',
           exactMatch: true,
         },
-        {
-          title: 'Detail Pembelian',
-          url: '/pembelian/detail',
-        },
+        // {
+        //   title: 'Detail Pembelian',
+        //   url: '/detail-pembelian',
+        // },
         {
           title: 'Penjualan Buku',
           url: '/penjualan/form',
@@ -60,14 +60,14 @@ export const navigation = {
           url: '/penjualan',
           exactMatch: true,
         },
-        {
-          title: 'Detail Penjualan',
-          url: '/penjualan/detail',
-        },
+        // {
+        //   title: 'Detail Penjualan',
+        //   url: '/detail-penjualan',
+        // },
       ],
     },
     {
-      title: 'Keanggotaan',
+      title: 'Membership',
       url: '#',
       items: [
         {

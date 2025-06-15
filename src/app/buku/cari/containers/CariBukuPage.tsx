@@ -88,16 +88,14 @@ export default function CariBukuPage() {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-2'>
           <div className='flex gap-2 mb-2'>
-            <div className='flex flex-col gap-3 w-full'>
-              <div
-                className='flex items-stretch justify-between gap-2
-              '
-              >
+            <div className='flex flex-col gap-4 w-full'>
+              <div className='flex items-end justify-between gap-2'>
                 <Input
                   id='keyword'
+                  label='Kata Kunci'
                   placeholder='Cari berdasarkan judul, ISBN, atau nama penulis'
                 />
-                <Button type='submit' variant='primary'>
+                <Button type='submit' variant='primary' className='h-10'>
                   Cari Buku
                 </Button>
               </div>
@@ -130,6 +128,7 @@ export default function CariBukuPage() {
           columns={columns}
           data={bukuData?.data || []}
           withFilter
+          emptyPlaceholder='Tidak ada buku yang ditemukan dengan kriteria tersebut.'
         />
       </div>
     </AdminLayout>

@@ -37,3 +37,17 @@ export type BukuTerlaris = {
   judul: string;
   sum: number;
 };
+
+export type DetailTransaksiBuku = {
+  judul: string;
+  penulis: string;
+  nama_penerbit: string;
+  nama_kategori: string;
+  isbn: string;
+  tahun_terbit: number;
+  jumlah_halaman: number;
+  harga_beli?: number;
+  harga_jual: number;
+  kuantitas: number;
+  subtotal: number;
+};

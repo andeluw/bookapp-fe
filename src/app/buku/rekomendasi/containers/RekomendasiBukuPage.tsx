@@ -68,9 +68,25 @@ export default function RekomendasiBukuPage() {
         >
           <Label htmlFor='max_stock'>Batas Stok Maksimum</Label>
           <div className='flex items-center gap-2 mb-2'>
-            <Input type='number' id='max_stock' />
-            <Button type='submit' variant='primary' isLoading={isLoading}>
-              Terapkan
+            <Input
+              type='number'
+              id='max_stock'
+              validation={{
+                required: 'Batas stok maksimum harus diisi',
+                min: {
+                  value: 0,
+                  message: 'Batas stok maksimum tidak boleh kurang dari 0',
+                },
+              }}
+              hideError
+            />
+            <Button
+              type='submit'
+              variant='primary'
+              className='h-10'
+              isLoading={isLoading}
+            >
+              Cari
             </Button>
           </div>
         </form>

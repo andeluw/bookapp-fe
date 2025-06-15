@@ -1,4 +1,5 @@
 'use client';
+import { Separator } from '@radix-ui/react-separator';
 import { Plus, Trash2 } from 'lucide-react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 
@@ -126,14 +127,16 @@ export default function PembelianForm() {
               />
             </div>
 
-            <div className='flex flex-col gap-4'>
+            <div className='flex flex-col gap-2 lg:gap-4'>
               <Typography variant='h3'>Detail Pembelian</Typography>
 
               <div className='grid grid-cols-12 gap-2 md:gap-4 px-1 max-md:text-xs'>
-                <Label className='col-span-5'>Judul Buku</Label>
+                <Label className='col-span-5 md:col-span-6 lg:col-span-5'>
+                  Judul Buku
+                </Label>
                 <Label className='col-span-3 sm:col-span-2'>Kuantitas</Label>
-                <Label className='col-span-3 text-nowrap lg:col-span-2'>
-                  Harga Beli
+                <Label className='col-span-4 lg:col-span-2 text-nowrap'>
+                  Harga
                 </Label>
                 <Label className='hidden lg:block col-span-2'>Subtotal</Label>
                 <div className='col-span-1'></div>
@@ -149,7 +152,7 @@ export default function PembelianForm() {
                     options={filteredBookOptions?.[index] || []}
                     isLoading={isLoadingBooks}
                     disabled={isLoadingBooks || !supplierId}
-                    containerClassName='col-span-5'
+                    containerClassName='col-span-5 md:col-span-6 lg:col-span-5'
                     validation={{
                       required: 'Buku harus dipilih',
                     }}
@@ -159,18 +162,20 @@ export default function PembelianForm() {
                     id={`items.${index}.kuantitas`}
                     type='number'
                     containerClassName='col-span-3 sm:col-span-2'
+                    disabled={watch(`items.${index}.buku_id`) === ''}
                     validation={{ required: 'Kuantitas harus diisi' }}
                     hideError
                   />
                   <Input
                     id={`items.${index}.harga_beli`}
                     type='number'
-                    containerClassName='col-span-3 lg:col-span-2'
+                    containerClassName='col-span-4 lg:col-span-2'
+                    disabled={watch(`items.${index}.buku_id`) === ''}
                     validation={{ required: 'Harga beli harus diisi' }}
                     hideError
                   />
                   <Typography
-                    className='col-span-2 mt-2'
+                    className='col-span-11 lg:col-span-2 mt-2'
                     variant='b3'
                     color='secondary'
                   >
@@ -188,33 +193,40 @@ export default function PembelianForm() {
                 </div>
               ))}
 
-              <div className='flex flex-col md:flex-row gap-2 justify-between mt-4'>
-                {availableBookOptions?.length > 0 && (
-                  <Button
-                    type='button'
-                    variant='secondary'
-                    rightIcon={Plus}
-                    onClick={() =>
-                      append({
-                        buku_id: '',
-                        kuantitas: 1,
-                        harga_beli: 0,
-                      })
-                    }
-                  >
-                    Tambah Buku
-                  </Button>
-                )}
+              {availableBookOptions?.length > 0 && (
                 <Button
-                  type='submit'
-                  variant='primary'
-                  className='md:ml-auto'
-                  isLoading={isPending}
+                  type='button'
+                  variant='secondary'
+                  rightIcon={Plus}
+                  onClick={() =>
+                    append({
+                      buku_id: '',
+                      kuantitas: 1,
+                      harga_beli: 0,
+                    })
+                  }
+                  className='w-fit mt-2'
                 >
-                  Beli Buku
+                  Tambah Buku
                 </Button>
-              </div>
+              )}
             </div>
+            <Separator className='mt-4 bg-gray-200 w-full h-0.5' />
+            <div className='flex flex-col gap-2 ml-auto items-end'>
+              <Typography variant='h2'>Total Pembelian</Typography>
+              <Typography variant='b1'>
+                {formatCurrencyIDR(
+                  items?.reduce((total, item) => {
+                    return (
+                      total + (item.kuantitas || 0) * (item.harga_beli || 0)
+                    );
+                  }, 0) || 0
+                )}
+              </Typography>
+            </div>
+            <Button type='submit' variant='primary' isLoading={isPending}>
+              Beli Buku
+            </Button>
           </form>
         </FormProvider>
       </Card>
