@@ -45,7 +45,7 @@ const availablePages = [
       },
       {
         title: 'Tambah Buku',
-        url: '/buku/tambah',
+        url: '/buku/form',
         caption: 'Tambahkan buku baru ke dalam katalog',
         icon: BookPlus,
       },
@@ -98,9 +98,9 @@ const availablePages = [
     caption: 'Kelola data membership pelanggan',
     pages: [
       {
-        title: 'Lihat Pengguna',
-        url: '/membership/pengguna',
-        caption: 'Lihat daftar pengguna yang memiliki membership',
+        title: 'Lihat Pelanggan',
+        url: '/membership/pelanggan',
+        caption: 'Lihat daftar pelanggan yang memiliki membership',
         icon: Users,
       },
       {

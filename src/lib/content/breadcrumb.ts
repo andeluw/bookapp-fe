@@ -7,7 +7,8 @@ export const breadcrumb: Record<string, string> = {
 
   '/buku/rekomendasi': 'Rekomendasi Pembelian',
   '/buku/cari': 'Cari Buku',
-  '/buku/tambah': 'Tambah Buku',
+  '/buku/form': 'Tambah Buku',
+  '/buku/detail/[id]': 'Detail Buku',
 
   '/pembelian/form': 'Pembelian Buku',
   '/pembelian': 'Daftar Pembelian',
@@ -19,7 +20,7 @@ export const breadcrumb: Record<string, string> = {
   '/detail-penjualan': 'Detail Penjualan',
   '/penjualan/[id]': 'Detail Penjualan',
 
-  '/membership/pengguna': 'Lihat Pengguna',
+  '/membership/pelanggan': 'Lihat Pelanggan',
   '/membership/buat': 'Buat Membership',
   '/membership/renew': 'Perpanjang Membership',
 };

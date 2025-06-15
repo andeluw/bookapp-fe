@@ -55,7 +55,7 @@ const TableBody = <T extends RowData>({
         rows.map((row, index) => (
           <tr
             className={cn(index % 2 === 0 ? 'bg-white' : 'bg-gray-50')}
-            key={row.id}
+            key={`${row.id}-${index}`}
           >
             {row.getVisibleCells().map((cell) => (
               <Typography

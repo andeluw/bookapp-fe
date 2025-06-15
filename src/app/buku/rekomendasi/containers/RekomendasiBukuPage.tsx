@@ -1,13 +1,17 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
+import { Eye } from 'lucide-react';
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+
+import { convertFromBukuId } from '@/lib/convert';
 
 import Button from '@/components/buttons/Button';
 import Input from '@/components/forms/Input';
 import { Label } from '@/components/forms/Label';
 import AdminLayout from '@/components/layouts/AdminLayout';
+import IconLink from '@/components/links/IconLink';
 import { PaginatedTable } from '@/components/table/PaginatedTable';
 import Typography from '@/components/Typography';
 
@@ -48,6 +52,17 @@ export default function RekomendasiBukuPage() {
     {
       accessorKey: 'nama_supplier',
       header: 'Nama Supplier',
+    },
+    {
+      accessorKey: 'buku_id',
+      header: 'Aksi',
+      enableSorting: false,
+      cell: ({ getValue }) => (
+        <IconLink
+          icon={Eye}
+          href={`/buku/detail/${convertFromBukuId(getValue() as string)}`}
+        />
+      ),
     },
   ];
 

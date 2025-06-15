@@ -73,7 +73,7 @@ export default function CariBukuPage() {
       cell: ({ getValue }) => (
         <IconLink
           icon={Eye}
-          href={`/buku/${convertFromBukuId(getValue() as string)}`}
+          href={`/buku/detail/${convertFromBukuId(getValue() as string)}`}
         />
       ),
     },

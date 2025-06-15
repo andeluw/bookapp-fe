@@ -35,7 +35,7 @@ export default function BukuTerlarisPage() {
       cell: ({ getValue }) => (
         <IconLink
           icon={Eye}
-          href={`/buku/${convertFromBukuId(getValue() as string)}`}
+          href={`/buku/detail/${convertFromBukuId(getValue() as string)}`}
         />
       ),
     },

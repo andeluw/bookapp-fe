@@ -16,43 +16,44 @@ import useGetDaftarPenjualan from '@/app/penjualan/hooks/useGetDaftarPenjualan';
 
 import { Penjualan } from '@/types/penjualan';
 
+export const penjualanColumns: ColumnDef<Penjualan>[] = [
+  {
+    accessorKey: 'penjualan_id',
+    header: 'Penjualan ID',
+  },
+  {
+    accessorKey: 'tanggal_penjualan',
+    header: 'Tanggal Penjualan',
+    cell: ({ getValue }) => formatDateString(getValue() as string),
+  },
+  {
+    accessorKey: 'nama_pelanggan',
+    header: 'Nama Pelanggan',
+  },
+  {
+    accessorKey: 'nama_pegawai',
+    header: 'Nama Pegawai',
+  },
+  {
+    accessorKey: 'total',
+    header: 'Total',
+    cell: ({ getValue }) => formatCurrencyIDR(getValue() as number),
+  },
+  {
+    accessorKey: 'penjualan_id',
+    header: 'Aksi',
+    enableSorting: false,
+    cell: ({ getValue }) => (
+      <IconLink
+        icon={Eye}
+        href={`/penjualan/${convertFromPenjualanId(getValue() as string)}`}
+      />
+    ),
+  },
+];
+
 export default function DaftarPenjualanPage() {
   const { data: penjualanData, isLoading } = useGetDaftarPenjualan();
-  const columns: ColumnDef<Penjualan>[] = [
-    {
-      accessorKey: 'penjualan_id',
-      header: 'Penjualan ID',
-    },
-    {
-      accessorKey: 'tanggal_penjualan',
-      header: 'Tanggal Penjualan',
-      cell: ({ getValue }) => formatDateString(getValue() as string),
-    },
-    {
-      accessorKey: 'nama_pelanggan',
-      header: 'Nama Pelanggan',
-    },
-    {
-      accessorKey: 'nama_pegawai',
-      header: 'Nama Pegawai',
-    },
-    {
-      accessorKey: 'total',
-      header: 'Total',
-      cell: ({ getValue }) => formatCurrencyIDR(getValue() as number),
-    },
-    {
-      accessorKey: 'penjualan_id',
-      header: 'Aksi',
-      enableSorting: false,
-      cell: ({ getValue }) => (
-        <IconLink
-          icon={Eye}
-          href={`/penjualan/${convertFromPenjualanId(getValue() as string)}`}
-        />
-      ),
-    },
-  ];
 
   return (
     <AdminLayout
@@ -71,7 +72,7 @@ export default function DaftarPenjualanPage() {
         </ButtonLink>
       </div>
       <PaginatedTable
-        columns={columns}
+        columns={penjualanColumns}
         data={penjualanData?.data || []}
         isLoading={isLoading}
         withFilter

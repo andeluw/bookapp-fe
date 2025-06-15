@@ -1,3 +1,6 @@
+import { Pembelian } from '@/types/pembelian';
+import { Penjualan } from '@/types/penjualan';
+
 export type Buku = {
   buku_id: string;
   judul: string;
@@ -6,21 +9,6 @@ export type Buku = {
   isbn: string;
   tahun_terbit: number;
   jumlah_halaman: number;
-  harga_jual: string;
-  jumlah_stok: number;
-};
-
-export type DetailBuku = {
-  buku_id: string;
-  judul: string;
-  nama_penulis: string;
-  nama_penerbit: string;
-  kategori: string;
-  isbn: string;
-  tahun_terbit: number;
-  jumlah_halaman: number;
-  nama_supplier: string;
-  harga_beli: string;
   harga_jual: string;
   jumlah_stok: number;
 };
@@ -39,6 +27,7 @@ export type BukuTerlaris = {
 };
 
 export type DetailTransaksiBuku = {
+  buku_id: string;
   judul: string;
   penulis: string;
   nama_penerbit: string;
@@ -50,4 +39,9 @@ export type DetailTransaksiBuku = {
   harga_jual: number;
   kuantitas: number;
   subtotal: number;
+};
+
+export type DetailBuku = DetailTransaksiBuku & {
+  pembelian: Pembelian[];
+  penjualan: Penjualan[];
 };

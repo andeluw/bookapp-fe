@@ -30,7 +30,7 @@ export const navigation = {
         },
         {
           title: 'Tambah Buku',
-          url: '/buku/tambah',
+          url: '/buku/form',
         },
       ],
     },
@@ -71,8 +71,8 @@ export const navigation = {
       url: '#',
       items: [
         {
-          title: 'Lihat Pengguna',
-          url: '/membership/pengguna',
+          title: 'Lihat Pelanggan',
+          url: '/membership/pelanggan',
         },
         {
           title: 'Buat Membership',
