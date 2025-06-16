@@ -330,10 +330,10 @@ export default function PenjualanForm() {
               {discountRate > 0 && (
                 <div className='flex flex-col items-end'>
                   <Typography variant='b2' className='text-gray-500'>
-                    Diskon ({membership} - {discountRate * 100}%):
+                    Diskon ({membership} -{Math.round(discountRate * 100)}%):
                   </Typography>
                   <Typography variant='b1' className='text-red-600'>
-                    -{formatCurrencyIDR(discountAmount)}
+                    - {formatCurrencyIDR(discountAmount)}
                   </Typography>
                 </div>
               )}

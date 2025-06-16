@@ -70,9 +70,21 @@ export default function DetailPelangganPage() {
   } = useGetDetailPelanggan({ noTelp });
   const pelanggan = data?.data;
   const pelangganData = [
+    // {
+    //   title: 'Membership ID',
+    //   value: pelanggan?.membership_id ? pelanggan.membership_id : '-',
+    // },
+    // {
+    //   title: 'Pelanggan ID',
+    //   value: pelanggan?.pelanggan_id || '-',
+    // },
     {
       title: 'Nama Pelanggan',
       value: pelanggan?.nama || '-',
+    },
+    {
+      title: 'Tipe Membership',
+      value: pelanggan?.tipe || '-',
     },
     {
       title: 'Nomor Telepon',
@@ -81,18 +93,6 @@ export default function DetailPelangganPage() {
     {
       title: 'Alamat',
       value: pelanggan?.alamat || '-',
-    },
-    {
-      title: 'Pelanggan ID',
-      value: pelanggan?.pelanggan_id || '-',
-    },
-    {
-      title: 'Membership ID',
-      value: pelanggan?.membership_id ? pelanggan.membership_id : '-',
-    },
-    {
-      title: 'Tipe Membership',
-      value: pelanggan?.tipe || '-',
     },
     {
       title: 'Tanggal Pembuatan',
@@ -128,7 +128,7 @@ export default function DetailPelangganPage() {
 
   return (
     <AdminLayout
-      title='Detail Pelanggan'
+      title='Lihat Pelanggan'
       subheading='Halaman untuk melihat detail pelanggan.'
       breadcrumbs={['/', '/membership/pelanggan']}
     >

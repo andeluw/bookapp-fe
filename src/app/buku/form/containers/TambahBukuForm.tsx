@@ -21,7 +21,7 @@ import Typography from '@/components/Typography';
 
 import useAuthStore from '@/stores/useAuthStore';
 
-import { useTambahBukuMutation } from '@/app/buku/form/hooks/usePembelianMutation';
+import { useTambahBukuMutation } from '@/app/buku/form/hooks/useTambahBukuMutation';
 
 export type TambahBukuRequest = {
   judul: string;

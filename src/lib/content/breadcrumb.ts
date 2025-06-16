@@ -22,5 +22,5 @@ export const breadcrumb: Record<string, string> = {
 
   '/membership/pelanggan': 'Lihat Pelanggan',
   '/membership/buat': 'Buat Membership',
-  '/membership/renew': 'Perpanjang Membership',
+  '/membership/renew': 'Renew Membership',
 };
