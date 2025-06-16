@@ -1,5 +1,6 @@
 'use client';
 import { Plus, Trash2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -55,6 +56,7 @@ function getDiscount(membership: string) {
 }
 
 export default function PenjualanForm() {
+  const router = useRouter();
   const [noTelp, setNoTelp] = useState<string>('');
   const [membership, setMembership] = useState<string>('');
   const [isNoTelpValid, setIsNoTelpValid] = useState<boolean>(false);
@@ -152,6 +154,11 @@ export default function PenjualanForm() {
   const { mutate: penjualanMutate, isPending } = usePenjualanMutation();
 
   const onSubmit = (data: PenjualanRequest) => {
+    if (!user?.pegawai_id) {
+      toast.error('Pegawai ID tidak ditemukan. Silakan login ulang.');
+      router.push('/login');
+      return;
+    }
     const buku_ids = data.items?.map((item) => item.buku_id) || [];
     const kuantitas = data.items?.map((item) => item.kuantitas) || [];
 

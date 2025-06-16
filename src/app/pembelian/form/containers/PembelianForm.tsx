@@ -1,7 +1,9 @@
 'use client';
 import { Separator } from '@radix-ui/react-separator';
 import { Plus, Trash2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 import { formatCurrencyIDR } from '@/lib/currency';
 import {
@@ -37,6 +39,7 @@ export type PembelianRequest = {
 
 export default function PembelianForm() {
   const user = useAuthStore.useUser();
+  const router = useRouter();
 
   const methods = useForm<PembelianRequest>({
     mode: 'onTouched',
@@ -84,6 +87,11 @@ export default function PembelianForm() {
   const { mutate: pembelianMutate, isPending } = usePembelianMutation();
 
   const onSubmit = (data: PembelianRequest) => {
+    if (!user?.pegawai_id) {
+      toast.error('Pegawai ID tidak ditemukan. Silakan login ulang.');
+      router.push('/login');
+      return;
+    }
     const buku_ids = data.items?.map((item) => item.buku_id) || [];
     const kuantitas = data.items?.map((item) => item.kuantitas) || [];
     const harga_belis = data.items?.map((item) => item.harga_beli) || [];

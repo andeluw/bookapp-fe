@@ -1,7 +1,9 @@
 'use client';
 import { Separator } from '@radix-ui/react-separator';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 import { formatCurrencyIDR } from '@/lib/currency';
 import { useKategoriOptions } from '@/hooks/kategori/useGetKategori';
@@ -52,6 +54,7 @@ export type TambahBukuRequest = {
 
 export default function TambahBukuForm() {
   const user = useAuthStore.useUser();
+  const router = useRouter();
 
   const methods = useForm<TambahBukuRequest>({
     mode: 'onTouched',
@@ -83,6 +86,11 @@ export default function TambahBukuForm() {
   const { mutate: tambahBukuMutate, isPending } = useTambahBukuMutation();
 
   const onSubmit = (data: TambahBukuRequest) => {
+    if (!user?.pegawai_id) {
+      toast.error('Pegawai ID tidak ditemukan. Silakan login ulang.');
+      router.push('/login');
+      return;
+    }
     const payload = {
       ...data,
       ...(data.is_new_penerbit === 'true'
